@@ -6,11 +6,6 @@ from pathlib import Path
 from time import sleep
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data"
-DB_PATH = DATA_DIR / "新刊通知リスト.xlsx"
-
-
 @dataclass
 class BookRecord:
     alert_id: int       # アラートID
@@ -21,8 +16,8 @@ class BookRecord:
     release_date: str   # 発売日
 
 
-def load_db() -> list[BookRecord]:
-    table = pl.read_excel(DB_PATH)
+def load_db(db_path: Path) -> list[BookRecord]:
+    table = pl.read_excel(db_path)
 
     book_db = []
 
@@ -41,7 +36,7 @@ def load_db() -> list[BookRecord]:
     return book_db
 
 
-def save_db(book_db: list[BookRecord]):
+def save_db(book_db: list[BookRecord], db_path: Path):
     rows = []
 
     for book in book_db:
@@ -55,7 +50,7 @@ def save_db(book_db: list[BookRecord]):
         })
 
     table = pl.DataFrame(rows).unique().sort("タイトル", "カテゴリー")
-    table.write_excel(DB_PATH)
+    table.write_excel(db_path)
 
 
 def retry(
