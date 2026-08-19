@@ -37,7 +37,9 @@ def send_line_message(text: str) -> None:
 
         api.push_message(
             PushMessageRequest(
-                to = USER_ID,
-                messages = [TextMessage(text=text)]
+                to=USER_ID,
+                messages=[
+                    TextMessage(text=text)
+                ]
             )
         )
