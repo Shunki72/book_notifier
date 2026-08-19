@@ -23,12 +23,12 @@ def load_db(db_path: Path) -> list[BookRecord]:
 
     for row in table.iter_rows(named=True):
         book = BookRecord(
-            alert_id = row["アラートID"],
-            category = row["カテゴリー"],
-            title = row["タイトル"],
-            calendar_title = row["カレンダー用タイトル"],
-            volume = row["最新巻"],
-            release_date = row["発売日"]
+            alert_id=row["アラートID"],
+            category=row["カテゴリー"],
+            title=row["タイトル"],
+            calendar_title=row["カレンダー用タイトル"],
+            volume=row["最新巻"],
+            release_date=row["発売日"]
         )
 
         book_db.append(book)
@@ -54,10 +54,10 @@ def save_db(book_db: list[BookRecord], db_path: Path):
 
 
 def retry(
-        n_retry: int = 10,
-        interval: float = 5,
-        exceptions: tuple = (Exception,)
-    ):
+    n_retry: int = 10,
+    interval: float = 5,
+    exceptions: tuple = (Exception,)
+):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
