@@ -60,7 +60,7 @@ def is_registered(
     time_min = datetime.combine(
         target_date,
         datetime.min.time(),
-        tzinfo = tz
+        tzinfo=tz
     )
 
     # 終了日時（翌日0時）
@@ -74,12 +74,12 @@ def is_registered(
             service
             .events()
             .list(
-                calendarId = calendar_id,
-                timeMin = time_min.isoformat(),
-                timeMax = time_max.isoformat(),
-                singleEvents = True,
-                showDeleted = False,
-                pageToken = page_token
+                calendarId=calendar_id,
+                timeMin=time_min.isoformat(),
+                timeMax=time_max.isoformat(),
+                singleEvents=True,
+                showDeleted=False,
+                pageToken=page_token
             )
             .execute()
         )
@@ -133,8 +133,8 @@ def register_event(
         service
         .events()
         .insert(
-            calendarId = calendar_id,
-            body = event_body
+            calendarId=calendar_id,
+            body=event_body
         )
         .execute()
     )
@@ -161,7 +161,7 @@ def delete_event(
     time_min = datetime.combine(
         target_date,
         datetime.min.time(),
-        tzinfo = tz
+        tzinfo=tz
     )
 
     # 終了日時（翌日0時）
@@ -175,12 +175,12 @@ def delete_event(
             service
             .events()
             .list(
-                calendarId = calendar_id,
-                timeMin = time_min.isoformat(),
-                timeMax = time_max.isoformat(),
-                singleEvents = True,
-                showDeleted = False,
-                pageToken = page_token
+                calendarId=calendar_id,
+                timeMin=time_min.isoformat(),
+                timeMax=time_max.isoformat(),
+                singleEvents=True,
+                showDeleted=False,
+                pageToken=page_token
             )
             .execute()
         )
@@ -202,9 +202,9 @@ def delete_event(
                 service
                 .events()
                 .delete(
-                    calendarId = calendar_id,
-                    eventId = event_id,
-                    sendUpdates = "none"
+                    calendarId=calendar_id,
+                    eventId=event_id,
+                    sendUpdates="none"
                 )
                 .execute()
             )
