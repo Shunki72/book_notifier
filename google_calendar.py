@@ -41,12 +41,12 @@ def build_api_cliant() -> Resource:
 
 @retry(n_retry=10)
 def is_registered(
-        service: Resource,
-        date_str: str,
-        title: str,
-        calendar_id: str = "primary",
-        timezone: str = "Asia/Tokyo"
-    ) -> bool:
+    service: Resource,
+    date_str: str,
+    title: str,
+    calendar_id: str = "primary",
+    timezone: str = "Asia/Tokyo"
+) -> bool:
     """
     与えられた日付に、与えられたタイトルの予定が登録済みかどうか判定する。
     """
@@ -101,12 +101,12 @@ def is_registered(
 
 @retry(n_retry=10)
 def register_event(
-        service: Resource,
-        date_str: str,
-        title: str,
-        calendar_id: str = "primary",
-        color_id: str = "5"
-    ) -> None:
+    service: Resource,
+    date_str: str,
+    title: str,
+    calendar_id: str = "primary",
+    color_id: str = "5"
+) -> None:
     """
     カレンダーに予定を追加する。
     """
@@ -142,12 +142,12 @@ def register_event(
 
 @retry(n_retry=10)
 def delete_event(
-        service: Resource,
-        date_str: str,
-        title: str,
-        calendar_id: str = "primary",
-        timezone: str = "Asia/Tokyo"
-    ) -> None:
+    service: Resource,
+    date_str: str,
+    title: str,
+    calendar_id: str = "primary",
+    timezone: str = "Asia/Tokyo"
+) -> None:
     """
     与えられた日付とタイトルに一致する予定を削除する。
     """
